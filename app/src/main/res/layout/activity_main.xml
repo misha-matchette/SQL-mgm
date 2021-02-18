@@ -51,6 +51,13 @@
                 android:padding="8dp"
                 android:text="Add data" />
 
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="update"
+                android:text="Update" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

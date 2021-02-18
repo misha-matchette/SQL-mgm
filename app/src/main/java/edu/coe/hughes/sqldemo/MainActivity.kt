@@ -61,6 +61,19 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
+
+    fun update(v:View){
+        if (editTextName!!.text.toString().isNotEmpty() &&
+            editTextSize!!.text.toString().isNotEmpty()
+        ) {
+            val item = Item(editTextName!!.text.toString(), editTextSize!!.text.toString().toInt())
+            db!!.updateData(item)
+            clearField()
+        }
+        else {
+            Toast.makeText(this, "Please Fill All Data", Toast.LENGTH_SHORT).show()
+        }
+    }
     private fun clearField() {
         editTextName!!.text.clear()
         editTextSize!!.text.clear()

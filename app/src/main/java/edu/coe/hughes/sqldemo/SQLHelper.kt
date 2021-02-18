@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import android.widget.Toast
 val DATABASENAME = "MY DATABASE"
 val TABLENAME = "Items"
@@ -59,5 +60,16 @@ class SQLHelper(var context: Context) : SQLiteOpenHelper(context, DATABASENAME, 
         val dropTable = "DROP TABLE IF EXISTS "+ TABLENAME
         db.execSQL(dropTable)
         createTable(db)
+    }
+
+    fun updateData(item:Item){
+        val database = this.writableDatabase
+        val cValues = ContentValues()
+        cValues.put(COL_NAME, item.name)
+        cValues.put(COL_SIZE, item.size)
+        Log.i("values", cValues.toString())
+        Log.i("Test", "We got into the update function")
+
+        database.update(TABLENAME, cValues, COL_NAME + "=", arrayOf(item.name.toString()))
     }
 }
