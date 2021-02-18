@@ -72,4 +72,11 @@ class SQLHelper(var context: Context) : SQLiteOpenHelper(context, DATABASENAME, 
 
         database.update(TABLENAME, cValues, COL_NAME + "=", arrayOf(item.name.toString()))
     }
+
+    fun deleteItem(item: Item){
+        val database = this.writableDatabase
+        val cValues = ContentValues()
+        cValues.put(COL_NAME, item.name)
+        cValues.put(COL_SIZE, item.size)
+    }
 }

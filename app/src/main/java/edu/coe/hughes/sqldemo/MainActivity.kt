@@ -74,6 +74,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Please Fill All Data", Toast.LENGTH_SHORT).show()
         }
     }
+
+    fun delete(v: View){
+
+    }
+
     private fun clearField() {
         editTextName!!.text.clear()
         editTextSize!!.text.clear()
