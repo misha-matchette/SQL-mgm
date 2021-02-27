@@ -76,6 +76,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun delete(v: View){
+        if (editTextName!!.text.toString().isNotEmpty() &&
+                editTextSize!!.text.toString().isNotEmpty()
+        ) {
+            val item = Item(editTextName!!.text.toString(), editTextSize!!.text.toString().toInt())
+            db!!.deleteItem(item)
+            clearField()
+        }
+
 
     }
 

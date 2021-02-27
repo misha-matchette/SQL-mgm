@@ -64,13 +64,19 @@ class SQLHelper(var context: Context) : SQLiteOpenHelper(context, DATABASENAME, 
 
     fun updateData(item:Item){
         val database = this.writableDatabase
-        val cValues = ContentValues()
-        cValues.put(COL_NAME, item.name)
-        cValues.put(COL_SIZE, item.size)
-        Log.i("values", cValues.toString())
-        Log.i("Test", "We got into the update function")
 
-        database.update(TABLENAME, cValues, COL_NAME + "=", arrayOf(item.name.toString()))
+        //val q2 =
+        //val query = "UPDATE $TABLENAME SET $COL_SIZE = " +item.size+ " WHERE $COL_NAME = '" +item.name + "'"
+        //Log.i("Test: ", query)
+        //database.rawQuery(query, null)
+        val contentValues = ContentValues()
+        contentValues.put(COL_NAME, item.name)
+        contentValues.put(COL_SIZE, item.size)
+        //Log.i("values", contentValues.toString())
+        //Log.i("Test", "We got into the update function")
+        var numUpdated =0
+        numUpdated = database.update(TABLENAME, contentValues, COL_NAME + "=?", arrayOf(item.name.toString()))
+        Toast.makeText(context, "Test", Toast.LENGTH_SHORT).show()
     }
 
     fun deleteItem(item: Item){
@@ -78,5 +84,7 @@ class SQLHelper(var context: Context) : SQLiteOpenHelper(context, DATABASENAME, 
         val cValues = ContentValues()
         cValues.put(COL_NAME, item.name)
         cValues.put(COL_SIZE, item.size)
+
+        var numDeleted = database.delete(TABLENAME, COL_NAME+"=?", arrayOf(item.name.toString()))
     }
 }
