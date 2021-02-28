@@ -45,9 +45,7 @@ class SQLHelper(var context: Context) : SQLiteOpenHelper(context, DATABASENAME, 
         val result = db.rawQuery(query, null)
         if (result.moveToFirst()) {
             do {
-                val item = Item()
-                item.name = result.getString(result.getColumnIndex(COL_NAME)).toString()
-                item.size = result.getString(result.getColumnIndex(COL_SIZE)).toInt()
+                val item = Item(result.getString(result.getColumnIndex(COL_NAME)).toString(),result.getString(result.getColumnIndex(COL_SIZE)).toInt())
                 list.add(item)
             }
             while (result.moveToNext())
