@@ -5,4 +5,4 @@ Turns out you have to assingn them to variables because they return ints with ho
 
 I also tried it with raw queries but those didn't work. Thankfully I don't need them.
 
-I did not try to turn the item class into a kotlin data class.
+I did change item into a data class (which those are actually very handy)
